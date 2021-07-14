@@ -29,6 +29,7 @@
  */
 
 import { useEffect, useState } from "react";
+import Form from "./components/Form";
 import "./App.css";
 
 function App() {
@@ -47,35 +48,20 @@ function App() {
   return (
     <div className="App">
       <div className="App__todo-container">
-        <div className="App__todo-container--top">
-          <input
-            type="text"
-            className="App__todo-container--top-input"
-            onChange={(e) => setNewToDo(e.target.value)}
-            value={newToDo}
-          />
-          <button
-            className="App__todo-container--top-button"
-            onClick={() => {
-              setTodos([newToDo, ...todos]);
-              setNewToDo("");
-            }}
-          >
-            ADD
-          </button>
-        </div>
 
+      <Form todos={todos}  setNewTodo={setNewToDo}  newTodo={newToDo} setTodos={setTodos} />
+        
         <div className="App__todo-container--main">
           {newToDo.length > 0 && (
             <div className="Card" style={{ backgroundColor: "yellow" }}>
-              {newToDo}
+              {newToDo }
             </div>
           )}
           {isLoading ? (
             <div>Loading...</div>
           ) : (
             todos.map((item, index) => {
-              return <div className="Card">{item}</div>;
+              return <div key={index} className="Card">{item}</div>;
             })
           )}
         </div>
