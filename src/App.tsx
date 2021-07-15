@@ -30,6 +30,7 @@
 
 import { useEffect, useState } from "react";
 import Form from "./components/Form";
+import Card from "./components/Card";
 import "./App.css";
 
 function App() {
@@ -61,7 +62,7 @@ function App() {
             <div>Loading...</div>
           ) : (
             todos.map((item, index) => {
-              return <div key={index} className="Card">{item}</div>;
+              return <Card key={index} item={item} />;
             })
           )}
         </div>
